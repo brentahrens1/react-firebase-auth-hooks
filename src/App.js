@@ -1,25 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
-function App() {
+import { Switch, Route } from 'react-router-dom'
+
+import { ProvideAuth, useAuth } from "./components/Firebase/Firebase";
+
+import ForgotPassword from './components/ForgotPassword/ForgotPassword'
+import SignUp from './components/SignUp/SignUp'
+import SignIn from './components/SignIn/SignIn'
+import Nav from './components/Nav/Nav'
+import Account from './components/Account/Account'
+import Home from './components/Home/Home'
+
+function App(props) {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProvideAuth>
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route path="/sign-up" exact component={SignUp} />
+          <Route path="/sign-in" exact component={SignIn} />
+          <Route path="/forgot-password" exact component={ForgotPassword} />
+          <Route path="/account" exact component={Account} /> : null
+          <Route path="/" exact component={Home} />
+        </Switch>
+      </div>
+    </ProvideAuth>
   );
 }
 

@@ -1,0 +1,12 @@
+.signup-contianer {
+    padding-top: 9rem;
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin: 0 auto;
+}
+
+.signup-contianer label {
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
